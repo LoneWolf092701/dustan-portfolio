@@ -4,12 +4,12 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-const MatrixStars = (props) => {
+const NoirStars = (props) => {
   const ref = useRef();
   
-  const [positions, colors] = useMemo(() => {
+  const [positions, sizes] = useMemo(() => {
     const positions = new Float32Array(3000 * 3);
-    const colors = new Float32Array(3000 * 3);
+    const sizes = new Float32Array(3000);
     
     for (let i = 0; i < 3000; i++) {
       const x = (Math.random() - 0.5) * 100;
@@ -18,18 +18,11 @@ const MatrixStars = (props) => {
       
       positions.set([x, y, z], i * 3);
       
-      // Create green/cyan matrix-style colors
-      const colorChoice = Math.random();
-      if (colorChoice > 0.7) {
-        // Cyan
-        colors.set([0, 0.85, 1], i * 3);
-      } else {
-        // Matrix green
-        colors.set([0, 1, 0.25], i * 3);
-      }
+      // Varying sizes for depth
+      sizes[i] = Math.random() * 0.3 + 0.1;
     }
     
-    return [positions, colors];
+    return [positions, sizes];
   }, []);
 
   useFrame((state, delta) => {
@@ -44,7 +37,7 @@ const MatrixStars = (props) => {
       <Points ref={ref} positions={positions} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          vertexColors
+          color="#ffffff"
           size={0.12}
           sizeAttenuation={true}
           depthWrite={false}
@@ -56,8 +49,8 @@ const MatrixStars = (props) => {
   );
 };
 
-// Matrix rain characters falling effect
-const MatrixRain = () => {
+// Falling particles effect - like film grain or dust
+const FallingParticles = () => {
   const ref = useRef();
   
   const particles = useMemo(() => {
@@ -68,7 +61,7 @@ const MatrixRain = () => {
       positions[i * 3] = (Math.random() - 0.5) * 50;
       positions[i * 3 + 1] = Math.random() * 50;
       positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      velocities.push(Math.random() * 0.1 + 0.05);
+      velocities.push(Math.random() * 0.08 + 0.04);
     }
     
     return { positions, velocities };
@@ -104,9 +97,9 @@ const MatrixRain = () => {
       </bufferGeometry>
       <pointsMaterial
         size={0.15}
-        color="#00ff41"
+        color="#ffffff"
         transparent
-        opacity={0.6}
+        opacity={0.4}
         sizeAttenuation
         blending={THREE.AdditiveBlending}
       />
@@ -118,8 +111,8 @@ const StarsCanvas = () => {
   return (
     <div className="w-full h-full">
       <Canvas camera={{ position: [0, 0, 1] }}>
-        <MatrixStars />
-        <MatrixRain />
+        <NoirStars />
+        <FallingParticles />
       </Canvas>
     </div>
   );

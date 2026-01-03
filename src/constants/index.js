@@ -47,10 +47,10 @@ export const projects = [
     name: "Staywise.lk",
     description: "Full-stack property booking platform with real-time availability, secure payment processing, and admin dashboard. Features JWT authentication and responsive design.",
     tags: [
-      { name: "react", color: "text-primary" },
-      { name: "node", color: "text-secondary" },
-      { name: "express", color: "text-white" },
-      { name: "tailwind", color: "text-primary" },
+      { name: "react" },
+      { name: "node" },
+      { name: "express" },
+      { name: "tailwind" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
@@ -59,22 +59,22 @@ export const projects = [
     name: "VRoxel",
     description: "Advanced procedural generation algorithm for Unity using Wave Function Collapse. Optimized with Burst Compiler for real-time 3D environment generation with context-aware patterns.",
     tags: [
-      { name: "unity", color: "text-secondary" },
-      { name: "csharp", color: "text-primary" },
-      { name: "procedural", color: "text-white" },
-      { name: "burst", color: "text-secondary" },
+      { name: "unity" },
+      { name: "csharp" },
+      { name: "procedural" },
+      { name: "burst" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
   },
   {
-    name: "JobArmer_CRM",
+    name: "JobArmer CRM",
     description: "Enterprise CRM platform for service management with client tracking, job scheduling, financial reporting, and team collaboration features. Built for scalability and performance.",
     tags: [
-      { name: "react", color: "text-primary" },
-      { name: "dotnet", color: "text-secondary" },
-      { name: "mssql", color: "text-white" },
-      { name: "azure", color: "text-primary" },
+      { name: "react" },
+      { name: "dotnet" },
+      { name: "mssql" },
+      { name: "azure" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
@@ -83,10 +83,10 @@ export const projects = [
     name: "AIRentoSoft",
     description: "Vehicle rental management system with complex tax calculations, booking engine, fleet management, and automated invoicing for international markets.",
     tags: [
-      { name: "typescript", color: "text-secondary" },
-      { name: "react", color: "text-primary" },
-      { name: "dotnet", color: "text-white" },
-      { name: "api", color: "text-secondary" },
+      { name: "typescript" },
+      { name: "react" },
+      { name: "dotnet" },
+      { name: "api" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null

@@ -24,13 +24,13 @@ const Contact = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!form.name.trim()) newErrors.name = "NAME_REQUIRED";
+    if (!form.name.trim()) newErrors.name = "Name is required";
     if (!form.email.trim()) {
-      newErrors.email = "EMAIL_REQUIRED";
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-      newErrors.email = "EMAIL_INVALID";
+      newErrors.email = "Email is invalid";
     }
-    if (!form.message.trim()) newErrors.message = "MESSAGE_REQUIRED";
+    if (!form.message.trim()) newErrors.message = "Message is required";
     return newErrors;
   };
 
@@ -45,7 +45,6 @@ const Contact = () => {
 
     setLoading(true);
 
-    // Simulate form submission
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
@@ -64,77 +63,74 @@ const Contact = () => {
         transition={{ duration: 0.5 }}
         className="flex-[0.75] noir-card p-8 backdrop-blur-sm relative overflow-hidden"
       >
-        {/* Background pattern */}
-        <div className="absolute inset-0 cyber-grid opacity-5" />
-        
         {/* Corner decorations */}
-        <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-primary/50" />
-        <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-primary/50" />
+        <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-white/20" />
+        <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-white/20" />
         
         <div className="relative z-10">
-          <p className="text-primary text-[14px] uppercase tracking-widest font-bold font-mono mb-2">
-            <span className="text-white">&lt;</span>INITIALIZE_CONNECTION<span className="text-white">/&gt;</span>
+          <p className="text-white text-[14px] uppercase tracking-[0.3em] font-bold mb-2 opacity-70">
+            Get In Touch
           </p>
-          <h3 className="text-white font-bold text-[40px] sm:text-[50px] mb-6 font-mono uppercase">
-            CONTACT<span className="text-primary animate-pulse">_</span>
+          <h3 className="text-white font-bold text-[40px] sm:text-[50px] mb-6 uppercase tracking-tight shadow-text">
+            Contact
           </h3>
-          <div className="w-24 h-1 bg-primary mb-8 shadow-neon" />
+          <div className="w-24 h-1 bg-white mb-8 shadow-noir" />
 
           <form ref={formRef} onSubmit={handleSubmit} className="mt-8 flex flex-col gap-6">
             <label className="flex flex-col">
-              <span className="text-white font-medium mb-3 font-mono uppercase text-sm tracking-wider">
-                [NAME_INPUT]
+              <span className="text-white font-medium mb-3 uppercase text-sm tracking-wider">
+                Your Name
               </span>
               <input
                 type="text"
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                placeholder="&gt; ENTER_YOUR_NAME"
-                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white font-mono outline-none border-2 ${
-                  errors.name ? "border-red-500" : "border-primary/50 focus:border-primary"
-                } transition-colors shadow-neon-green/20`}
+                placeholder="Enter your name"
+                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white outline-none border-2 ${
+                  errors.name ? "border-red-500" : "border-white/50 focus:border-white"
+                } transition-colors`}
               />
               {errors.name && (
-                <span className="text-red-500 text-xs mt-2 font-mono">&gt; ERROR: {errors.name}</span>
+                <span className="text-red-500 text-xs mt-2">{errors.name}</span>
               )}
             </label>
 
             <label className="flex flex-col">
-              <span className="text-white font-medium mb-3 font-mono uppercase text-sm tracking-wider">
-                [EMAIL_INPUT]
+              <span className="text-white font-medium mb-3 uppercase text-sm tracking-wider">
+                Your Email
               </span>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                placeholder="&gt; ENTER_YOUR_EMAIL"
-                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white font-mono outline-none border-2 ${
-                  errors.email ? "border-red-500" : "border-primary/50 focus:border-primary"
-                } transition-colors shadow-neon-green/20`}
+                placeholder="Enter your email"
+                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white outline-none border-2 ${
+                  errors.email ? "border-red-500" : "border-white/50 focus:border-white"
+                } transition-colors`}
               />
               {errors.email && (
-                <span className="text-red-500 text-xs mt-2 font-mono">&gt; ERROR: {errors.email}</span>
+                <span className="text-red-500 text-xs mt-2">{errors.email}</span>
               )}
             </label>
 
             <label className="flex flex-col">
-              <span className="text-white font-medium mb-3 font-mono uppercase text-sm tracking-wider">
-                [MESSAGE_INPUT]
+              <span className="text-white font-medium mb-3 uppercase text-sm tracking-wider">
+                Your Message
               </span>
               <textarea
                 rows={7}
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="&gt; ENTER_YOUR_MESSAGE"
-                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white font-mono outline-none border-2 ${
-                  errors.message ? "border-red-500" : "border-primary/50 focus:border-primary"
-                } resize-none transition-colors shadow-neon-green/20`}
+                placeholder="Enter your message"
+                className={`bg-black py-4 px-6 placeholder:text-gray-600 text-white outline-none border-2 ${
+                  errors.message ? "border-red-500" : "border-white/50 focus:border-white"
+                } resize-none transition-colors`}
               />
               {errors.message && (
-                <span className="text-red-500 text-xs mt-2 font-mono">&gt; ERROR: {errors.message}</span>
+                <span className="text-red-500 text-xs mt-2">{errors.message}</span>
               )}
             </label>
 
@@ -143,21 +139,21 @@ const Contact = () => {
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={loading}
-              className={`cyber-button py-3 px-8 outline-none w-full sm:w-fit text-white font-bold uppercase tracking-wider transition-all ${
+              className={`noir-button py-3 px-8 outline-none w-full sm:w-fit transition-all ${
                 loading ? "opacity-50 cursor-not-allowed" : ""
               }`}
             >
-              {loading ? "[TRANSMITTING...]" : "[SEND_MESSAGE]"}
+              {loading ? "Sending..." : "Send Message"}
             </motion.button>
 
             {submitted && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-primary/10 border-2 border-primary"
+                className="p-4 bg-white/10 border-2 border-white"
               >
-                <p className="text-primary font-medium font-mono text-sm">
-                  &gt; SUCCESS: MESSAGE_TRANSMITTED_SUCCESSFULLY
+                <p className="text-white font-medium text-sm">
+                  Thank you! Your message has been sent successfully.
                 </p>
               </motion.div>
             )}
@@ -173,57 +169,54 @@ const Contact = () => {
         className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
       >
         <div className="noir-card w-full h-full flex flex-col justify-center p-8 backdrop-blur-sm relative overflow-hidden">
-          {/* Background pattern */}
-          <div className="absolute inset-0 cyber-grid opacity-5" />
-          
           {/* Corner decorations */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-secondary/50" />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-secondary/50" />
+          <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-white/20" />
+          <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-white/20" />
           
           <div className="text-center space-y-6 relative z-10">
-            <div className="text-6xl mb-6 text-primary neon-text">[ ! ]</div>
-            <h4 className="text-white text-2xl font-bold font-mono uppercase tracking-wider">
-              CONNECTION_AVAILABLE
+            <div className="text-6xl mb-6 text-white noir-glow flicker">✉</div>
+            <h4 className="text-white text-2xl font-bold uppercase tracking-wider shadow-text">
+              Let's Connect
             </h4>
-            <p className="text-gray-400 max-w-md mx-auto text-sm font-mono leading-relaxed">
-              &gt; OPEN FOR COLLABORATION ON NEW PROJECTS, CREATIVE IDEAS, OR OPPORTUNITIES. 
-              RESPONSE TIME: 24-48 HOURS.
+            <p className="text-gray-400 max-w-md mx-auto text-sm leading-relaxed">
+              I'm always open to discussing new projects, creative ideas, or opportunities 
+              to be part of your vision. Response time: 24-48 hours.
             </p>
             
             <div className="space-y-4 mt-8">
               <motion.a
                 whileHover={{ x: 5 }}
                 href="mailto:kaladaranchanthirakumar@gmail.com"
-                className="flex items-center justify-center gap-3 text-gray-300 hover:text-primary transition-colors font-mono text-sm border-l-2 border-transparent hover:border-primary pl-4"
+                className="flex items-center justify-center gap-3 text-gray-300 hover:text-white transition-colors text-sm border-l-2 border-transparent hover:border-white pl-4"
               >
-                <span className="text-primary font-bold">[EMAIL]</span>
+                <span className="text-white font-bold">EMAIL</span>
                 <span>kaladaranchanthirakumar@gmail.com</span>
               </motion.a>
               
               <motion.a
                 whileHover={{ x: 5 }}
                 href="tel:+94761962266"
-                className="flex items-center justify-center gap-3 text-gray-300 hover:text-primary transition-colors font-mono text-sm border-l-2 border-transparent hover:border-primary pl-4"
+                className="flex items-center justify-center gap-3 text-gray-300 hover:text-white transition-colors text-sm border-l-2 border-transparent hover:border-white pl-4"
               >
-                <span className="text-primary font-bold">[PHONE]</span>
+                <span className="text-white font-bold">PHONE</span>
                 <span>+94 76 196 2266</span>
               </motion.a>
               
-              <div className="flex items-center justify-center gap-3 text-gray-300 font-mono text-sm pl-4">
-                <span className="text-primary font-bold">[LOCATION]</span>
-                <span>COLOMBO, SRI_LANKA</span>
+              <div className="flex items-center justify-center gap-3 text-gray-300 text-sm pl-4">
+                <span className="text-white font-bold">LOCATION</span>
+                <span>Colombo, Sri Lanka</span>
               </div>
             </div>
 
-            <div className="flex gap-4 justify-center mt-8 pt-8 border-t border-primary/20">
+            <div className="flex gap-4 justify-center mt-8 pt-8 border-t border-white/20">
               <motion.a
                 whileHover={{ scale: 1.1, y: -5 }}
                 href="https://github.com/LoneWolf092701"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-black border-2 border-primary/50 hover:border-primary flex items-center justify-center transition-all group"
+                className="w-12 h-12 bg-black border-2 border-white/50 hover:border-white flex items-center justify-center transition-all"
               >
-                <span className="text-primary font-bold text-xs font-mono group-hover:text-white transition-colors">GH</span>
+                <span className="text-white font-bold text-xs">GH</span>
               </motion.a>
               
               <motion.a
@@ -231,17 +224,17 @@ const Contact = () => {
                 href="https://linkedin.com/in/kaladaran-chanthirakumar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-black border-2 border-secondary/50 hover:border-secondary flex items-center justify-center transition-all group"
+                className="w-12 h-12 bg-black border-2 border-white/50 hover:border-white flex items-center justify-center transition-all"
               >
-                <span className="text-secondary font-bold text-xs font-mono group-hover:text-white transition-colors">LI</span>
+                <span className="text-white font-bold text-xs">LI</span>
               </motion.a>
             </div>
 
-            {/* Status indicator */}
-            <div className="mt-8 p-4 bg-black border border-primary/30 font-mono text-xs">
-              <p className="text-primary">
-                <span className="inline-block w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-                STATUS: ONLINE
+            {/* Status */}
+            <div className="mt-8 p-4 bg-black border border-white/30 text-xs">
+              <p className="text-white">
+                <span className="inline-block w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
+                STATUS: AVAILABLE
               </p>
             </div>
           </div>

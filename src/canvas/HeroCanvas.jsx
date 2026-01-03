@@ -1,7 +1,7 @@
 // src/canvas/HeroCanvas.jsx
 import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, MeshDistortMaterial, Torus, Box } from "@react-three/drei";
+import { OrbitControls, Torus, Box } from "@react-three/drei";
 
 const AnimatedShape = () => {
   const meshRef = useRef();
@@ -42,22 +42,22 @@ const AnimatedShape = () => {
       {/* Main wireframe shape */}
       <mesh ref={meshRef} position={[0, 0, 0]}>
         <icosahedronGeometry args={[1, 2]} />
-        <meshBasicMaterial color="#00ff41" wireframe={true} />
+        <meshBasicMaterial color="#ffffff" wireframe={true} />
       </mesh>
       
       {/* Orbiting torus */}
       <Torus ref={torusRef} args={[0.3, 0.1, 16, 32]} position={[3, 0, 0]}>
-        <meshBasicMaterial color="#00d9ff" wireframe={true} />
+        <meshBasicMaterial color="#ffffff" wireframe={true} />
       </Torus>
       
       {/* Orbiting box */}
       <Box ref={boxRef} args={[0.5, 0.5, 0.5]} position={[-3, 0, 0]}>
-        <meshBasicMaterial color="#00ff41" wireframe={true} />
+        <meshBasicMaterial color="#ffffff" wireframe={true} />
       </Box>
       
-      {/* Ambient particles */}
-      <pointLight position={[2, 2, 2]} intensity={0.5} color="#00ff41" />
-      <pointLight position={[-2, -2, -2]} intensity={0.3} color="#00d9ff" />
+      {/* Minimal lighting */}
+      <pointLight position={[2, 2, 2]} intensity={0.3} color="#ffffff" />
+      <pointLight position={[-2, -2, -2]} intensity={0.2} color="#ffffff" />
     </group>
   );
 };
