@@ -9,7 +9,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full h-screen mx-auto overflow-hidden">
+    <section className="relative w-full h-screen mx-auto overflow-hidden bg-black">
+      
+      {/* Cyber Grid Background */}
+      <div className="absolute inset-0 cyber-grid opacity-10" />
       
       {/* Text Overlay */}
       <div className="absolute inset-0 top-[120px] max-w-7xl mx-auto px-6 flex flex-row items-start gap-5 z-10 pointer-events-none">
@@ -19,83 +22,112 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col justify-center items-center mt-5"
         >
-          <div className="w-5 h-5 rounded-full bg-[#915EFF] shadow-lg shadow-[#915EFF]/50" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient bg-gradient-to-b from-[#915EFF] via-[#915EFF]/50 to-transparent" />
+          <div className="w-5 h-5 bg-primary shadow-neon relative">
+            <div className="absolute inset-0 bg-primary animate-ping" />
+          </div>
+          <div className="w-[2px] sm:h-80 h-40 bg-gradient-to-b from-primary via-secondary to-transparent shadow-neon" />
         </motion.div>
 
         <div>
-          <motion.h1 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-white font-black text-4xl sm:text-5xl lg:text-7xl"
+            className="mb-4"
           >
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#915EFF] to-[#4F46E5]">Kaladaran</span>
-          </motion.h1>
-          
-          <motion.p 
+            <span className="text-primary text-sm font-mono tracking-widest">&lt;INITIALIZE&gt;</span>
+          </motion.div>
+
+          <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-4 text-gray-300 text-lg lg:text-2xl font-medium max-w-3xl"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-white font-bold text-4xl sm:text-5xl lg:text-7xl font-mono uppercase tracking-tight"
           >
-            I craft immersive <span className="text-[#915EFF]">3D experiences</span>, 
-            design innovative <span className="text-[#915EFF]">game algorithms</span>, 
-            <br className="sm:block hidden" />
-            and build scalable <span className="text-[#915EFF]">full-stack applications</span>.
-          </motion.p>
+            HI, I'M <span className="neon-text glitch">KALADARAN</span>
+          </motion.h1>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mt-4 text-gray-400 text-base lg:text-xl font-mono max-w-3xl leading-relaxed"
+          >
+            <p className="mb-2">
+              <span className="text-primary">&gt;</span> CRAFTING <span className="text-white">IMMERSIVE 3D EXPERIENCES</span>
+            </p>
+            <p className="mb-2">
+              <span className="text-secondary">&gt;</span> DESIGNING <span className="text-white">INNOVATIVE ALGORITHMS</span>
+            </p>
+            <p>
+              <span className="text-primary">&gt;</span> BUILDING <span className="text-white">SCALABLE FULL-STACK SYSTEMS</span>
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8 flex gap-4 pointer-events-auto"
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-8 flex gap-4 pointer-events-auto flex-wrap"
           >
             <a 
               href="#contact"
-              className="px-8 py-3 bg-gradient-to-r from-[#915EFF] to-[#4F46E5] text-white font-semibold rounded-lg shadow-lg hover:shadow-[#915EFF]/50 transition-all hover:scale-105"
+              className="cyber-button px-6 py-3 text-sm font-bold uppercase tracking-wider hover:scale-105 transition-transform"
             >
-              Get In Touch
+              INITIALIZE_CONTACT
             </a>
             <a 
               href="#work"
-              className="px-8 py-3 bg-transparent border-2 border-[#915EFF] text-[#915EFF] font-semibold rounded-lg hover:bg-[#915EFF]/10 transition-all"
+              className="px-6 py-3 bg-transparent border-2 border-white text-white font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-all text-sm clip-path-corner"
             >
-              View Work
+              VIEW_PROJECTS
             </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="mt-6 text-primary text-xs font-mono"
+          >
+            <span className="animate-pulse">[SYSTEM_READY]</span>
           </motion.div>
         </div>
       </div>
 
       {/* The 3D Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 opacity-40">
         <HeroCanvas />
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Cyberpunk Style */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-10 w-full flex justify-center items-center z-10"
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-10 w-full flex flex-col items-center z-10 gap-2"
       >
+        <span className="text-primary text-xs font-mono uppercase tracking-wider">SCROLL</span>
         <button 
           onClick={scrollToNext}
-          className="w-[35px] h-[64px] rounded-3xl border-4 border-gray-400 flex justify-center items-start p-2 cursor-pointer hover:border-[#915EFF] transition-colors"
+          className="w-[2px] h-[50px] bg-gradient-to-b from-primary to-transparent relative cursor-pointer group"
           aria-label="Scroll down"
         >
           <motion.div
-            animate={{ y: [0, 24, 0] }}
+            animate={{ y: [0, 20, 0] }}
             transition={{
               duration: 1.5,
               repeat: Infinity,
               repeatType: "loop"
             }}
-            className="w-3 h-3 rounded-full bg-gray-400 mb-1"
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary shadow-neon"
           />
         </button>
       </motion.div>
-      
+
+      {/* Corner Decorations */}
+      <div className="absolute top-20 left-6 w-16 h-16 border-t-2 border-l-2 border-primary/30" />
+      <div className="absolute bottom-10 right-6 w-16 h-16 border-b-2 border-r-2 border-secondary/30" />
     </section>
   );
 };

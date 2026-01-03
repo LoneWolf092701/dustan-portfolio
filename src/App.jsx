@@ -25,27 +25,23 @@ const App = () => {
   }, []);
 
   return (
-    <div className="relative z-0 bg-slate-950 font-sans">
-      {/* Stars Background */}
+    <div className="relative z-0 bg-black font-mono">
+      {/* Scan Line Effect */}
+      <div className="scan-line" />
+      
+      {/* Matrix Stars Background */}
       <div className="fixed inset-0 z-0">
         <StarsCanvas />
       </div>
 
       <div className="relative z-10">
-        <div className="bg-gradient-to-b from-slate-900/50 to-transparent">
-          <Navbar />
-          <Hero />
-        </div>
-        
+        <Navbar />
+        <Hero />
         <About />
         <Experience />
         <Skills />
         <Works />
-        
-        <div className="relative z-0">
-          <Contact />
-        </div>
-
+        <Contact />
         <Footer />
       </div>
     </div>

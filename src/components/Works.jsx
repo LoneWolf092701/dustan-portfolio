@@ -17,78 +17,102 @@ const ProjectCard = ({ index, name, description, tags, source_code_link, live_li
       onMouseLeave={() => setIsHovered(false)}
       className="group relative"
     >
-      <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl sm:w-[360px] w-full border border-slate-700 hover:border-[#915EFF]/50 transition-all hover:shadow-xl hover:shadow-[#915EFF]/20 overflow-hidden">
+      <div className="noir-card p-6 sm:w-[360px] w-full backdrop-blur-sm overflow-hidden relative">
         
-        {/* Project Image Container */}
-        <div className="relative w-full h-[230px] mb-5 overflow-hidden rounded-xl">
-          {/* Placeholder with gradient */}
-          <div className="w-full h-full bg-gradient-to-br from-[#915EFF]/20 to-[#4F46E5]/20 flex items-center justify-center relative">
-            <div className="absolute inset-0 bg-slate-900/50" />
-            <div className="relative z-10 text-6xl opacity-30">{["🌐", "🎮", "💼"][index % 3]}</div>
+        {/* Background pattern */}
+        <div className="absolute inset-0 cyber-grid opacity-5" />
+        
+        {/* Corner decorations */}
+        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-primary/50" />
+        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-primary/50" />
+        
+        <div className="relative z-10">
+          {/* Project Number */}
+          <div className="text-primary text-xs font-mono font-bold mb-4 border border-primary px-2 py-1 inline-block">
+            [PROJECT_{String(index + 1).padStart(2, '0')}]
           </div>
 
-          {/* Overlay on hover */}
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent flex items-end justify-center p-4"
-              >
-                <div className="flex gap-3">
+          {/* Project Image Container */}
+          <div className="relative w-full h-[200px] mb-5 overflow-hidden border-2 border-noir-700 group-hover:border-primary/50 transition-all">
+            {/* Placeholder with pattern */}
+            <div className="w-full h-full bg-gradient-to-br from-noir-900 to-noir-800 flex items-center justify-center relative overflow-hidden">
+              <div className="absolute inset-0 cyber-grid opacity-10" />
+              <div className="relative z-10 text-6xl opacity-20 font-bold font-mono text-primary">
+                {String(index + 1).padStart(2, '0')}
+              </div>
+              
+              {/* Scan line effect */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-primary shadow-neon animate-scan opacity-50" />
+            </div>
+
+            {/* Overlay on hover */}
+            <AnimatePresence>
+              {isHovered && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 bg-black/90 flex items-center justify-center gap-3"
+                >
                   {source_code_link && (
                     <motion.button
-                      whileHover={{ scale: 1.1 }}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: 20, opacity: 0 }}
+                      transition={{ delay: 0.1 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => window.open(source_code_link, "_blank")}
-                      className="px-4 py-2 bg-slate-800 hover:bg-[#915EFF] text-white rounded-lg font-medium transition-all flex items-center gap-2 shadow-lg"
+                      className="cyber-button px-4 py-2 text-xs font-bold uppercase tracking-wider"
                     >
-                      <span>📂</span>
-                      Code
+                      [CODE]
                     </motion.button>
                   )}
                   {live_link && (
                     <motion.button
-                      whileHover={{ scale: 1.1 }}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: 20, opacity: 0 }}
+                      transition={{ delay: 0.2 }}
+                      whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => window.open(live_link, "_blank")}
-                      className="px-4 py-2 bg-[#915EFF] hover:bg-[#4F46E5] text-white rounded-lg font-medium transition-all flex items-center gap-2 shadow-lg"
+                      className="px-4 py-2 bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-primary hover:text-black transition-all border-2 border-white"
                     >
-                      <span>🔗</span>
-                      Live
+                      [LIVE]
                     </motion.button>
                   )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Project Details */}
+          <div>
+            <h3 className="text-white font-bold text-[20px] mb-3 group-hover:text-primary transition-colors font-mono uppercase">
+              {name}
+            </h3>
+            <div className="w-12 h-[2px] bg-primary mb-3" />
+            <p className="text-gray-400 text-[13px] leading-relaxed font-mono">
+              {description}
+            </p>
+          </div>
+
+          {/* Tags */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag.name}
+                className={`px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-wider bg-black border ${tag.color} border-current`}
+              >
+                #{tag.name}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* Project Details */}
-        <div>
-          <h3 className="text-white font-bold text-[24px] mb-2 group-hover:text-[#915EFF] transition-colors">
-            {name}
-          </h3>
-          <p className="text-gray-400 text-[15px] leading-relaxed">
-            {description}
-          </p>
-        </div>
-
-        {/* Tags */}
-        <div className="mt-4 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag.name}
-              className={`px-3 py-1 text-[13px] font-medium rounded-full bg-slate-800/80 ${tag.color} border border-slate-700`}
-            >
-              #{tag.name}
-            </span>
-          ))}
-        </div>
-
-        {/* Decorative corner */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#915EFF]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity" />
+        {/* Hover border effect */}
+        <div className="absolute inset-0 border-2 border-primary opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
       </div>
     </motion.div>
   );
@@ -96,19 +120,23 @@ const ProjectCard = ({ index, name, description, tags, source_code_link, live_li
 
 const Works = () => {
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-8 max-w-7xl mx-auto relative">
+      {/* Background decoration */}
+      <div className="absolute top-10 right-10 w-64 h-64 border border-primary/10" />
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-[#915EFF] text-[18px] uppercase tracking-wider font-semibold">
-          My work
+        <p className="text-primary text-[14px] uppercase tracking-widest font-bold font-mono mb-2">
+          <span className="text-white">&lt;</span>PORTFOLIO<span className="text-white">/&gt;</span>
         </p>
-        <h2 className="text-white font-black text-[40px] sm:text-[50px] mt-2">
-          Projects.
+        <h2 className="text-white font-bold text-[40px] sm:text-[60px] mt-2 font-mono uppercase">
+          PROJECTS<span className="text-primary animate-pulse">_</span>
         </h2>
+        <div className="w-24 h-1 bg-primary mt-4 shadow-neon" />
       </motion.div>
 
       <motion.div
@@ -118,12 +146,13 @@ const Works = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="w-full flex"
       >
-        <p className="mt-4 text-gray-300 text-[17px] max-w-3xl leading-[30px]">
-          The following projects showcase my skills and experience through real-world examples. 
-          Each project demonstrates my ability to solve complex problems, work with different technologies, 
-          and manage projects effectively. Every project includes brief descriptions with links to code repositories 
-          and live demos where available.
-        </p>
+        <div className="mt-6 border-l-2 border-primary pl-6">
+          <p className="text-gray-300 text-[15px] max-w-3xl leading-[28px] font-mono">
+            <span className="text-primary">&gt;</span> THE FOLLOWING PROJECTS SHOWCASE REAL-WORLD PROBLEM-SOLVING, 
+            TECHNOLOGY IMPLEMENTATION, AND PROJECT MANAGEMENT CAPABILITIES. EACH INCLUDES CODE REPOSITORIES 
+            AND LIVE DEMONSTRATIONS WHERE AVAILABLE.
+          </p>
+        </div>
       </motion.div>
 
       {/* Projects Grid */}
@@ -141,18 +170,47 @@ const Works = () => {
         transition={{ duration: 0.5, delay: 0.4 }}
         className="mt-16 text-center"
       >
-        <p className="text-gray-400 text-lg mb-4">
-          Want to see more of my work?
-        </p>
-        <a
-          href="https://github.com/LoneWolf092701"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-[#915EFF] to-[#4F46E5] text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-[#915EFF]/50 transition-all hover:scale-105"
-        >
-          <span>📦</span>
-          Visit My GitHub
-        </a>
+        <div className="noir-card p-8 inline-block backdrop-blur-sm">
+          <p className="text-gray-400 text-sm mb-6 font-mono uppercase tracking-wider">
+            <span className="text-primary">[</span>MORE_PROJECTS_AVAILABLE<span className="text-primary">]</span>
+          </p>
+          <a
+            href="https://github.com/LoneWolf092701"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cyber-button px-8 py-3 text-sm font-bold uppercase tracking-wider inline-block"
+          >
+            ACCESS_GITHUB_REPO
+          </a>
+        </div>
+      </motion.div>
+
+      {/* Project stats */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="mt-12 p-6 bg-black border border-primary/30 font-mono text-xs"
+      >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div>
+            <div className="text-primary font-bold text-xl mb-1">{projects.length}</div>
+            <div className="text-gray-500 uppercase tracking-widest">TOTAL_PROJECTS</div>
+          </div>
+          <div>
+            <div className="text-secondary font-bold text-xl mb-1">100%</div>
+            <div className="text-gray-500 uppercase tracking-widest">COMPLETION_RATE</div>
+          </div>
+          <div>
+            <div className="text-primary font-bold text-xl mb-1">FULL</div>
+            <div className="text-gray-500 uppercase tracking-widest">STACK_COVERAGE</div>
+          </div>
+          <div>
+            <div className="text-secondary font-bold text-xl mb-1">OPEN</div>
+            <div className="text-gray-500 uppercase tracking-widest">SOURCE_STATUS</div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );

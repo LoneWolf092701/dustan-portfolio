@@ -47,10 +47,10 @@ export const projects = [
     name: "Staywise.lk",
     description: "Full-stack property booking platform with real-time availability, secure payment processing, and admin dashboard. Features JWT authentication and responsive design.",
     tags: [
-      { name: "react", color: "text-blue-400" },
-      { name: "node", color: "text-green-400" },
-      { name: "express", color: "text-gray-400" },
-      { name: "tailwind", color: "text-cyan-400" },
+      { name: "react", color: "text-primary" },
+      { name: "node", color: "text-secondary" },
+      { name: "express", color: "text-white" },
+      { name: "tailwind", color: "text-primary" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
@@ -59,22 +59,22 @@ export const projects = [
     name: "VRoxel",
     description: "Advanced procedural generation algorithm for Unity using Wave Function Collapse. Optimized with Burst Compiler for real-time 3D environment generation with context-aware patterns.",
     tags: [
-      { name: "unity", color: "text-purple-400" },
-      { name: "csharp", color: "text-green-400" },
-      { name: "procedural-gen", color: "text-orange-400" },
-      { name: "burst", color: "text-red-400" },
+      { name: "unity", color: "text-secondary" },
+      { name: "csharp", color: "text-primary" },
+      { name: "procedural", color: "text-white" },
+      { name: "burst", color: "text-secondary" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
   },
   {
-    name: "JobArmer CRM",
+    name: "JobArmer_CRM",
     description: "Enterprise CRM platform for service management with client tracking, job scheduling, financial reporting, and team collaboration features. Built for scalability and performance.",
     tags: [
-      { name: "react", color: "text-blue-400" },
-      { name: "dotnet", color: "text-purple-400" },
-      { name: "mssql", color: "text-red-400" },
-      { name: "azure", color: "text-blue-300" },
+      { name: "react", color: "text-primary" },
+      { name: "dotnet", color: "text-secondary" },
+      { name: "mssql", color: "text-white" },
+      { name: "azure", color: "text-primary" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null
@@ -83,10 +83,10 @@ export const projects = [
     name: "AIRentoSoft",
     description: "Vehicle rental management system with complex tax calculations, booking engine, fleet management, and automated invoicing for international markets.",
     tags: [
-      { name: "typescript", color: "text-blue-500" },
-      { name: "react", color: "text-cyan-400" },
-      { name: "dotnet", color: "text-purple-400" },
-      { name: "api", color: "text-green-400" },
+      { name: "typescript", color: "text-secondary" },
+      { name: "react", color: "text-primary" },
+      { name: "dotnet", color: "text-white" },
+      { name: "api", color: "text-secondary" },
     ],
     source_code_link: "https://github.com/LoneWolf092701",
     live_link: null

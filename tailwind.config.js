@@ -7,31 +7,66 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#915EFF",
-        secondary: "#4F46E5",
-        tertiary: "#151030",
-        "black-100": "#100d25",
-        "black-200": "#090325",
-        "white-100": "#f3f3f3",
+        primary: "#00ff41", // Matrix green
+        secondary: "#00d9ff", // Cyan
+        noir: {
+          950: "#000000",
+          900: "#0a0a0a",
+          800: "#141414",
+          700: "#1e1e1e",
+          600: "#282828",
+          500: "#323232",
+        },
+        neon: {
+          green: "#00ff41",
+          cyan: "#00d9ff",
+          white: "#ffffff",
+        }
       },
       boxShadow: {
-        card: "0px 35px 120px -15px #211e35",
+        neon: "0 0 20px rgba(0, 255, 65, 0.5)",
+        "neon-cyan": "0 0 20px rgba(0, 217, 255, 0.5)",
+        "neon-strong": "0 0 40px rgba(0, 255, 65, 0.8)",
       },
       screens: {
         xs: "450px",
       },
       backgroundImage: {
-        "hero-pattern": "linear-gradient(to bottom, #0f172a, #020617)",
+        "grid-pattern": "linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px)",
+        "scanline": "repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 2px)",
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'glitch': 'glitch 3s infinite',
+        'scan': 'scan 8s linear infinite',
+        'flicker': 'flicker 2s infinite',
+        'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        }
+        glitch: {
+          '0%, 100%': { transform: 'translate(0)' },
+          '20%': { transform: 'translate(-2px, 2px)' },
+          '40%': { transform: 'translate(-2px, -2px)' },
+          '60%': { transform: 'translate(2px, 2px)' },
+          '80%': { transform: 'translate(2px, -2px)' },
+        },
+        scan: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100vh)' },
+        },
+        flicker: {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.8 },
+        },
+        'pulse-neon': {
+          '0%, 100%': { 
+            boxShadow: '0 0 20px rgba(0, 255, 65, 0.5)',
+            borderColor: 'rgba(0, 255, 65, 0.5)'
+          },
+          '50%': { 
+            boxShadow: '0 0 40px rgba(0, 255, 65, 0.8)',
+            borderColor: 'rgba(0, 255, 65, 1)'
+          },
+        },
       }
     },
   },
